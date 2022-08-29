@@ -1,18 +1,20 @@
-import { useState } from 'react'
-import {Route, Routes} from 'react-router-dom'
+
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import AutoComplete from './components/AutoComplete/AutoComplete'
+import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 
-const Home = () => <h1>Home</h1> 
-const About = () => <h1>About</h1> 
+const Home = () => <h1 className="text-3xl font-bold underline" >Home</h1>
 
-function App() {
+function App () {
   return (
     <div className="App">
-      aqui va lo de los pokes
+      <AutoComplete/>
       <Routes>
-        <Route path="/" element={<Home/>} /><Route path="/about" element={<About/>} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/pokemon/:pokemonName" element={<PokemonDetails/>} />
       </Routes>
-      
     </div>
   )
 }
