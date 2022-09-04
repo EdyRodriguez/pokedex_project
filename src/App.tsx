@@ -5,7 +5,7 @@ import './App.css'
 import AutoComplete from './components/AutoComplete/AutoComplete'
 import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 
-const Home = () => <h1 className="text-3xl font-bold underline" >Home</h1>
+const Home = () => <h1>Home</h1>
 
 function App () {
   return (
