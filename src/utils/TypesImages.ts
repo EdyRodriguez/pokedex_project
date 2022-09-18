@@ -1,3 +1,4 @@
+// @ts-nocheck
 import bug from '../assets/types/bug.png'
 import dark from '../assets/types/dark.png'
 import dragon from '../assets/types/dragon.png'
