@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useState } from 'react'
 import './PokemonDetails.css'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getPokemon } from '../../utils/ApiCalls'
+import TypesImages from '../../utils/TypesImages'
+import { WiStars } from 'react-icons/wi'
 import {
   pokemonTemplate,
   pokemonTemplateDefault
@@ -42,6 +44,11 @@ function PokemonDetails () {
     return pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)
   }
 
+  const getType = (typeName: string) => {
+    const type = TypesImages.findIndex(e => e.name === typeName)
+    return type !== -1 ? TypesImages[type].image : ''
+  }
+
   return (
     <div className="PokemonDetails">
       <>
@@ -52,33 +59,62 @@ function PokemonDetails () {
           : (
           <>
             <div className="pokemon-card">
-              <h2 className="pokemon-title">
-                {pokemon.name ? 'No.' + pokemon.id + ' ' + pokemonUpperCase(pokemon.name) : 'Loading...'}
-              </h2>
+              <div className="pokemon-card-top">
+                {pokemon.id > 1
+                  ? (
+                  <Link
+                    className="arrows"
+                    to={{ pathname: `/pokemon/${pokemon.id - 1}` }}
+                  >
+                    {'<'}{' '}
+                  </Link>
+                    )
+                  : (
+                  <a></a>
+                    )}
+                <h2 className="pokemon-title">
+                  {pokemon.name
+                    ? 'No.' + pokemon.id + ' ' + pokemonUpperCase(pokemon.name)
+                    : 'Loading...'}
+                </h2>
+                <Link
+                  className="arrows"
+                  to={{ pathname: `/pokemon/${pokemon.id + 1}` }}
+                >
+                  {'>'}{' '}
+                </Link>
+              </div>
               <div className="pokemon-container">
                 <div className="pokemon-image-gallery">
                   <img
-                  className='selected-image'
-                  src={pokemonImage.value}
-                  alt={pokemonImage.key}
+                    className="selected-image"
+                    src={pokemonImage.value}
+                    alt={pokemonImage.key}
                   />
                   <div className="pokemon-image-gallery-container">
                     {pokemonImages.map((image, index) => (
                       <>
-                      <img
-                      style={{ border: pokemonImage.key === image.key ? '4px solid red' : '' }}
-                      className='pokemon-image-gallery-item'
-                      key={index}
-                      src={image?.value}
-                      alt={image?.key}
-                      onClick={() => setPokemonImage(image)}
-                      />
+                        <img
+                          style={{
+                            border:
+                              pokemonImage.key === image.key
+                                ? '4px solid red'
+                                : ''
+                          }}
+                          className= {image.key.includes('female') ? 'pokemon-image-gallery-item female' : 'pokemon-image-gallery-item male'}
+                          key={index}
+                          src={image?.value}
+                          alt={image?.key}
+                          onClick={() => setPokemonImage(image)}
+                        />
+                        {image.key.includes('shiny') ? (<div className='shiny'> <WiStars /> </div>) : '' }
                       </>
                     ))}
                   </div>
+                  <p style={{ textAlign: 'justify', fontFamily: 'sans-seriff', fontSize: '1rem', marginLeft: '10px' }}>*pink represents female sprites</p>
                 </div>
-                <div className='stats-container'>
-                  <h2 className='stats-title'>Base Stats: </h2>
+                <div className="stats-container">
+                  <h2 className="stats-title">Base Stats: </h2>
                   <div className="stats-items">
                     <h3>HP: {pokemon.stats[0].base_stat}</h3>
                     <h3>Attack: {pokemon.stats[1].base_stat}</h3>
@@ -88,19 +124,27 @@ function PokemonDetails () {
                     <h3>Speed: {pokemon.stats[5].base_stat}</h3>
                   </div>
                   <div>
-                    <h2 className='stats-title'>Abilities: </h2>
-                    <ul className='abs-list'>
+                    <h2 className="stats-title">Abilities: </h2>
+                    <ul className="abs-list">
                       {pokemon.abilities.map((ability, index) => (
-                        <li key={index}>{ability.is_hidden ? pokemonUpperCase(ability.ability.name) + ' (hidden)' : pokemonUpperCase(ability.ability.name) }</li>
+                        <li key={index}>
+                          {ability.is_hidden
+                            ? pokemonUpperCase(ability.ability.name) +
+                              ' (hidden)'
+                            : pokemonUpperCase(ability.ability.name)}
+                        </li>
                       ))}
                     </ul>
-                    <h2 className='stats-title'>Types: </h2>
-                    <div>
-                      {}
-                    </div>
-                    <div>
-
-                    </div>
+                    <h2 className="stats-title">Types: </h2>
+                    <div className='types-container'>{pokemon.types.map((type, index) => (
+                      <img
+                        key={index}
+                        className="type-image"
+                        src={ getType(type.type.name) }
+                        alt={type.type.name}
+                      />
+                    )) }</div>
+                    <div></div>
                   </div>
                 </div>
               </div>
