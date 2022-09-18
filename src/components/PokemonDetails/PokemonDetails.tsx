@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useState } from 'react'
 import './PokemonDetails.css'
 import { useParams } from 'react-router-dom'
@@ -8,7 +9,7 @@ import {
 } from '../../utils/pokemonTemplate'
 
 function PokemonDetails () {
-  let imageArray: any[] = [];
+  const imageArray: any[] = []
   const { pokemonName } = useParams()
   const [pokemon, setPokemon] = useState<pokemonTemplate>(
     pokemonTemplateDefault
@@ -52,7 +53,7 @@ function PokemonDetails () {
           <>
             <div className="pokemon-card">
               <h2 className="pokemon-title">
-                {pokemon.name ?'No.' + pokemon.id + ' ' + pokemonUpperCase(pokemon.name) : 'Loading...'}
+                {pokemon.name ? 'No.' + pokemon.id + ' ' + pokemonUpperCase(pokemon.name) : 'Loading...'}
               </h2>
               <div className="pokemon-container">
                 <div className="pokemon-image-gallery">
