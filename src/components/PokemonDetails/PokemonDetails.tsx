@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useState } from 'react'
 import './PokemonDetails.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPokemon } from '../../utils/ApiCalls'
 import TypesImages from '../../utils/TypesImages'
 import { WiStars } from 'react-icons/wi'
@@ -11,6 +11,7 @@ import {
 } from '../../utils/pokemonTemplate'
 
 function PokemonDetails () {
+  const navigate = useNavigate()
   const imageArray: any[] = []
   const { pokemonName } = useParams()
   const [pokemon, setPokemon] = useState<pokemonTemplate>(
@@ -29,6 +30,7 @@ function PokemonDetails () {
       })
       .catch((error) => {
         console.log(error)
+        navigate('/404')
       })
   }, [pokemonName])
 
