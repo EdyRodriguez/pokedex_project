@@ -24,7 +24,7 @@ function AutoComplete () {
       )
   }, [])
 
-  const onSuggestionsFetchRequested = ({ value }) => {
+  const onSuggestionsFetchRequested = ({ value }: any) => {
     setPokemonSuggestions(filterPokemons(value))
   }
   const filterPokemons = (value: any) => {
@@ -60,7 +60,7 @@ function AutoComplete () {
   const selectPokemon = (suggestion: { name: '', url: '' }) => {
     setSelectedPokemon(suggestion)
   }
-  const onChange = (e: any, { newValue }) => {
+  const onChange = (e: any, { newValue }: any) => {
     setValue(newValue)
   }
   const inputProps = {

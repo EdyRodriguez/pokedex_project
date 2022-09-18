@@ -1,12 +1,10 @@
-import React, { FC } from 'react';
-import styles from './Navbar.module.css';
+import React from 'react'
+import './Navbar.module.css'
 
-interface NavbarProps {}
-
-const Navbar: FC<NavbarProps> = () => (
-  <div className={styles.Navbar}>
+const Navbar = () => (
+  <div className='Navbar'>
     Navbar Component
   </div>
-);
+)
 
-export default Navbar;
+export default Navbar
