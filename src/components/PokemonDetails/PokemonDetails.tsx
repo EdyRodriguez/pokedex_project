@@ -109,7 +109,7 @@ function PokemonDetails () {
                           alt={image?.key}
                           onClick={() => setPokemonImage(image)}
                         />
-                        {image.key.includes('shiny') ? (<div className='shiny'> <WiStars /> </div>) : '' }
+                        {image.key.includes('shiny') ? (<div className='shiny' key={index + 10}> <WiStars /> </div>) : '' }
                       </>
                     ))}
                   </div>

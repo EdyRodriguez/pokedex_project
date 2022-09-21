@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
-import AutoComplete from './components/AutoComplete/AutoComplete'
+import Navbar from './components/Navbar/Navbar'
 import PokemonDetails from './components/PokemonDetails/PokemonDetails'
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
 function App () {
   return (
     <div className="App">
-      <AutoComplete />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pokemon/:pokemonName" element={<PokemonDetails />} />

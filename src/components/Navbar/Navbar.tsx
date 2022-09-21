@@ -1,9 +1,16 @@
 import React from 'react'
-import './Navbar.module.css'
+import AutoComplete from '../AutoComplete/AutoComplete'
+import './Navbar.css'
+import LogoEdy from '../../assets/images/LogoEdy.png'
+import { TbPokeball }from 'react-icons/Tb'
 
 const Navbar = () => (
   <div className='Navbar'>
-    Navbar Component
+    <div className='Navbar-logo'>
+      <TbPokeball className='logo-pokeball'/>
+      <img className='logo-edy' src={LogoEdy}/>
+    </div>
+      <AutoComplete />
   </div>
 )
 

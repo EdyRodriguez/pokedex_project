@@ -9,19 +9,25 @@ const data = async () => {
   return response
 }
 function AutoComplete () {
+  const [pokemonArray, setPokemonArray] = useState([])
   const [value, setValue] = useState('')
   const [pokemonSuggestions, setPokemonSuggestions] = useState(suggestionsData)
   const [selectedPokemon, setSelectedPokemon] = useState({ name: '', url: '' })
   useEffect(() => {
-    data()
-      .then((response) => {
-        suggestionsData.push(...response)
-      }
-      )
-      .catch((error) => {
-        console.log(error)
-      }
-      )
+    if (pokemonArray.length !== 0) {
+      suggestionsData.push(pokemonArray)
+    } else {
+      data()
+        .then((response) => {
+          suggestionsData.push(...response)
+          setPokemonArray({ ...response })
+        }
+        )
+        .catch((error) => {
+          console.log(error)
+        }
+        )
+    }
   }, [])
 
   const onSuggestionsFetchRequested = ({ value }: any) => {
@@ -81,6 +87,7 @@ function AutoComplete () {
 
   return (
   <div className="AutoComplete">
+    <div>
     <Autosuggest
       suggestions={pokemonSuggestions}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -90,7 +97,10 @@ function AutoComplete () {
       inputProps={inputProps}
       onSuggestionSelected={eventEnter}
      />
-     <Link className='search-button' to={{ pathname: `/pokemon/${selectedPokemon.name}` }} >Search</Link>
+    </div>
+    <div>
+      <Link className='search-button' to={{ pathname: `/pokemon/${selectedPokemon.name}` }} >Search</Link>
+    </div>
   </div>
   )
 }
