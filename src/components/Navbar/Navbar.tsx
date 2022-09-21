@@ -1,8 +1,9 @@
 import React from 'react'
 import AutoComplete from '../AutoComplete/AutoComplete'
 import './Navbar.css'
+// @ts-expect-error
 import LogoEdy from '../../assets/images/LogoEdy.png'
-import { TbPokeball }from 'react-icons/Tb'
+import { TbPokeball } from 'react-icons/Tb'
 
 const Navbar = () => (
   <div className='Navbar'>
