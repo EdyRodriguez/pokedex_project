@@ -1,0 +1,9 @@
+.Home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+    margin: 1rem;
+    gap: 10px;
+}

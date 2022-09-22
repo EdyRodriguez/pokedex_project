@@ -113,11 +113,11 @@ function PokemonDetails () {
                       </>
                     ))}
                   </div>
-                  <p style={{ textAlign: 'justify', fontFamily: 'sans-seriff', fontSize: '1rem', marginLeft: '10px' }}>*pink represents female sprites</p>
+                  <p className='note'>*pink represents female sprites</p>
                 </div>
                 <div className="stats-container">
-                  <h2 className="stats-title">Base Stats: </h2>
                   <div className="stats-items">
+                  <h2 className="stats-title">Base Stats: </h2>
                     <h3>HP: {pokemon.stats[0].base_stat}</h3>
                     <h3>Attack: {pokemon.stats[1].base_stat}</h3>
                     <h3>Defense: {pokemon.stats[2].base_stat}</h3>

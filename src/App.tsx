@@ -2,34 +2,9 @@ import React, { useState } from 'react'
 import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
+import Footer from './components/Footer/Footer'
+import Home from './components/Home/Home'
 import PokemonDetails from './components/PokemonDetails/PokemonDetails'
-
-const Home = () => {
-  const [pokemon, setPokemon] = useState('')
-  const handleInputChange = (event: any) => {
-    console.log(event.target.value)
-    setPokemon(event.target.value)
-  }
-  return (
-    <div className="home">
-      <h1 className="text-3xl font-bold underline">Home</h1>
-      <p>
-        You can search every pokemon and get its data just type and click in
-        search!
-      </p>
-      <h2> I still working on the home page XD </h2>
-      <input
-        type="text"
-        placeholder="Search"
-        className="searchHome"
-        onChange={handleInputChange}
-      />
-      <Link className="Button" to={{ pathname: `/pokemon/${pokemon}` }}>
-        {'Search'}
-      </Link>
-    </div>
-  )
-}
 
 function App () {
   return (
@@ -51,6 +26,7 @@ function App () {
           }
         />
       </Routes>
+      <Footer />
     </div>
   )
 }

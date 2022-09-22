@@ -4,10 +4,11 @@
     align-items: center;
     flex-wrap: wrap;
     background-color: black;
-    padding: 2rem;
+    padding: 1rem;
 }
 .Navbar-logo{
     display: flex;
+    cursor: pointer;
 }
 .logo-pokeball{
     width: 50px;
@@ -26,4 +27,20 @@
     margin : 0;
     padding: 0;
     font-size: 2rem;
+}
+.Navbar-search{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 768px){
+    .Navbar{
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .Navbar-logo{
+        margin-bottom: 1rem;
+    }
 }
