@@ -1,5 +1,5 @@
 import React from 'react'
-import { TbCopyrightOff } from 'react-icons/Tb'
+import { TbCopyrightOff } from 'react-icons/tb'
 import './Footer.css'
 function Footer () {
   return (

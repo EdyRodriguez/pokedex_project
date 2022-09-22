@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import './Navbar.css'
 // @ts-expect-error
 import LogoEdy from '../../assets/images/LogoEdy.png'
-import { TbPokeball } from 'react-icons/Tb'
+import { TbPokeball } from 'react-icons/tb'
 
 function Navbar () {
   const navigate = useNavigate()
